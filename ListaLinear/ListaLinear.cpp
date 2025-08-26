@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -122,9 +121,34 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	int valor;
+	int pos;
+
+	if (nElementos == 0) {
+		cout << "A lista está vazia. Nada a excluir." << endl;
+		return;
+	}
 
 
+	cout << "Digite o valor que deseja excluir: ";
+	cin >> valor;
+
+	pos = posicaoElemento(valor);
+	if (pos == -1) {
+		cout << "Elemento não encontrado na lista." << endl;
+		return;
+	}
+
+
+	for (int i = pos; i < nElementos - 1; i++) {
+		lista[i] = lista[i + 1];
+	}
+
+	nElementos--;
+	cout << "Elemento excluído com sucesso." << endl;
 }
+
+
 
 void buscarElemento()
 {
@@ -148,7 +172,13 @@ int posicaoElemento(int busca)
 	for (int i = 0; i < nElementos; i++) {
 		if (busca == lista[i]) {
 			posicao = i;
+			break;
+
+
 		}
+
+		else (posicao == -1);
+
 	}
 	return posicao;
 }
